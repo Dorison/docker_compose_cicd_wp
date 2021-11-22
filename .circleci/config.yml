@@ -17,20 +17,3 @@ jobs:
           docker build -t dorison/circleci-demo-docker:$TAG .
           docker login -u dorison -p $DOCKERHUB_PASSWORD
           docker push dorison/circleci-demo-docker:$TAG
-  test:
-    docker:
-      - image: circleci/golang:1.15
-        auth:
-          username: dorison
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - run: |
-          export
-          date
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test
